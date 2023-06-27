@@ -1,0 +1,14 @@
+If you want to install Typescript Just follow some steps-
+<ul>
+  <ol>Create a folder for learning purpose like - Typescript</ol>
+  <ol>npm init -y</ol>
+  <ol>npm install typescript --save-dev</ol>
+  <ol>Create a src folder in root folder</ol>
+  <ol>In src folder create a file with extension (.ts) like - index.ts</ol>
+  <ol>In src folder create a file with extension (.ts) like - index.ts</ol>
+  <ol>Now write a example code like -</ol>
+  let a : Number = 5;
+  console.log(a);                --- Copy and Paste it in your .ts file;
+  <ol>Now check your dist folder, you will find exact same file but with .js extension with compliled code</ol>
+  <ol>For learning purpose you can follow official website of Typescript</ol>
+</ul>
