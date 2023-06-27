@@ -7,8 +7,8 @@
   <ol>In the src folder create a file with extension (.ts) like - index.ts</ol>
   <ol>In the src folder create a file with extension (.ts) like - index.ts</ol>
   <ol>Now write an example code like -</ol>
-  let a : Number = 5;
-  console.log(a);                --- Copy and Paste it into your .ts file;
-  <ol>Now check your dist folder, you will find exact same file but with a .js extension with compiled code</ol>
+  <ol>let a : Number = 5;</ol>
+  <ol>console.log(a);</ol> --- Copy and Paste it into your .ts file;
+  <ol>Now check your dist folder, you will find the same file but with a .js extension with compiled code</ol>
   <ol>For learning purposes you can follow the official website of Typescript</ol>
 </ul>
