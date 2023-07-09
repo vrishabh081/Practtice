@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -73,4 +73,54 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+
+form{
+  margin: auto;
+  border: 1px solid;
+  padding: 1rem;
+  font-size: 1.1rem;
+  width: 400px;
+}
+form>input, form>select{
+  border: 1px solid black;
+  display: block;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+input[type="submit"], button{
+  cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover{
+  background-color: rgb(232, 232, 232);
+}
+
+button{
+  margin-bottom: 2rem;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+table{
+  border: 1px solid;
+  margin: 2rem auto;
+  font-size: 1.5rem;
+  width: 100%;
+}
+th, td{
+  border: 1px solid;
+  padding: 0.5rem;
+  width: 20%;
+}
+table input{
+  width: 100%;
+  text-align: center;
+  background-color: rgba(128, 128, 128, 0.276);
 }
