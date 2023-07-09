@@ -30,11 +30,12 @@ const AddProduct = async (req, res) => {
     try{
         const payload = req.body;
         const data = await ProductModel.create(payload);
-        return res.status(200).json({message: "Product data added", data})
+        data.save();
+        return res.status(200).json({message: "Product data saved", data})
     }
     catch(error){
         console.log(error);
-        console.log("OOP's product data not added");
+        console.log("OOP's product data not saved");
     }
 }
 
@@ -44,11 +45,11 @@ const UpdateProduct = async (req, res) => {
         const payload = req.body;
         const {_id} = req.params;
         await ProductModel.findByIdAndUpdate({_id}, payload);
-        return res.status(200).json({message: "Product updated"});
+        return res.status(200).json({message: "Product updated saved"});
     }
     catch(error){
         console.log(error);
-        console.log("OOP's product data not updated");
+        console.log("OOP's product data not saved");
     }
 }
 
@@ -57,25 +58,13 @@ const DeleteProduct = async (req, res) => {
     try{
         const {_id} = req.params;
         await ProductModel.findByIdAndDelete({_id});
-        return res.status(200).json({message: "Product deleted"});
+        return res.status(200).json({message: "Product deleted saved"});
     }
     catch(error){
         console.log(error);
-        console.log("OOP's product data not deleted");
+        console.log("OOP's product data not saved");
     }
 }
 
-
-// Delete all product-
-const DeleteManyProduct = async (req, res) => {
-    try{
-        await ProductModel.deleteMany();
-        return res.status(200).json({message: "All Products deleted"});
-    }
-    catch(error){
-        console.log(error);
-        console.log("OOP's product data not deleted");
-    }
-}
-module.exports = {AddProduct, GetSingleProduct, GetProduct, UpdateProduct, DeleteProduct, DeleteManyProduct};
+module.exports = {AddProduct, GetSingleProduct, GetProduct, UpdateProduct, DeleteProduct};
 
