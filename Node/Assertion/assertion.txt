@@ -1,0 +1,10 @@
+* What is Assertion ?
+==> An assertion is a statement that checks whether a certain condition is true. In the context of programming, assertions help you express assumptions about your code. They provide a way to verify that your expectations hold true during the execution of your program.
+    Assertions play a crucial role in testing and debugging. They help you catch unexpected behavior early in the development process, making it easier to identify and fix issues before they reach production.
+    It return nothing when it gets success otherwise it returns Assertion error.
+
+* Why are Assertions Important?
+==> Catch Bugs Early:- Assertions help you catch errors and bugs as soon as they occur, making it easier to identify and fix problems during development rather than after your code has been deployed.
+==> Validate Inputs and Outputs:- Assertions can be used to validate input parameters, function return values, or any other aspect of your code's behavior.
+==> Debugging: When an assertion fails, it provides you with valuable information about where and why something went wrong. This can significantly speed up the debugging process.
+==> Refactoring Safety: When you refactor or modify code, assertions serve as a safety net that alerts you if the changes break your code's expected behavior.
