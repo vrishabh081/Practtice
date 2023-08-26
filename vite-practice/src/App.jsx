@@ -1,6 +1,7 @@
 import './App.css'
 import Form from './components/form'
 import FormikPractice from './components/formik'
+import FacebookLogin from './firebaseConfig/FacebookLogin'
 import GoogleLogin from './firebaseConfig/GoogleLogin'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       {/* <Form/> */}
       {/* <FormikPractice/> */}
       <GoogleLogin/>
+      <FacebookLogin/>
     </>
   )
 }
