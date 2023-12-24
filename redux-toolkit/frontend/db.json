@@ -1,0 +1,83 @@
+{
+  "users": [
+    {
+      "name": "Rishabh",
+      "email": "vrishabh081@gmail.com",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "name": "Rishabh",
+      "email": "vrishabh1@gmail.com",
+      "password": "123",
+      "id": 2
+    }
+  ],
+  "todos": [
+    {
+      "task": "Task 1",
+      "status": false,
+      "id": 3
+    },
+    {
+      "task": "Task New",
+      "status": false,
+      "id": 4
+    },
+    {
+      "task": "Arjun",
+      "status": false,
+      "id": 5
+    },
+    {
+      "task": "Ali",
+      "status": false,
+      "id": 6
+    },
+    {
+      "task": "Sajid",
+      "status": false,
+      "id": 7
+    },
+    {
+      "task": "Task 4",
+      "status": false,
+      "id": 8
+    },
+    {
+      "task": "Task 2",
+      "status": false,
+      "id": 9
+    },
+    {
+      "task": "Task 5",
+      "status": false,
+      "id": 10
+    },
+    {
+      "task": "Task 6",
+      "status": false,
+      "id": 11
+    },
+    {
+      "task": "Task 7",
+      "status": false,
+      "id": 12
+    },
+    {
+      "task": "Task 8",
+      "status": false,
+      "id": 13
+    },
+    {
+      "task": "Task 9",
+      "status": false,
+      "id": 14
+    },
+    {
+      "task": "Task 10",
+      "status": false,
+      "id": 15
+    }
+  ]
+}
