@@ -49,8 +49,13 @@ export default function UpdateModal({todo}) {
                 <DialogContent>
                     <form onSubmit={formik.handleSubmit}>
                         <input type="text" name ="task" value={formik.values.task} onChange={(e) => {formik.handleChange(e); dispatch(mutateTodos({todo, value: e.target.value}))}} onBlur={formik.handleBlur} placeholder='Type your task' style={{width:"90%", display:"block", margin:"0.5rem auto", borderRadius:"0.5rem", border:"1px solid black", padding:"0.6rem"}} />
+                        <select name="status" value={formik.values.status} onChange={(e) => {formik.handleChange(e)}} onBlur={formik.handleBlur} style={{width:"90%", display:"block", margin:"0.5rem auto", borderRadius:"0.5rem", border:"1px solid black", padding:"0.6rem"}}>
+                            <option value="">Status</option>
+                            <option value={"true"}>True</option>
+                            <option value={"false"}>False</option>
+                        </select>
                         <input type="submit" value={"Update"} style={{width:"90%", display:"block", margin:" 2rem auto 0.5rem auto", borderRadius:"0.5rem", border:"1px solid black", padding:"0.6rem"}} />
-                        <span>{formik.errors.task && formik.touched.task ? formik.errors.task : ""}</span>
+                        <span>{formik.errors.task && formik.touched.task ? formik.errors.task : ""}, {formik.errors.status && formik.touched.status ? formik.errors.status : ""}</span>
                     </form>
                 </DialogContent>
             </Dialog>

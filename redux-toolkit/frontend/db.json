@@ -22,67 +22,67 @@
   "todos": [
     {
       "task": "Task 1",
-      "status": false,
+      "status": "false",
       "id": 3
     },
     {
       "task": "ABC",
-      "status": false,
+      "status": "true",
       "id": 4
     },
     {
       "task": "Arjun 2",
-      "status": false,
+      "status": "false",
       "id": 5
     },
     {
       "task": "Ali",
-      "status": false,
+      "status": "false",
       "id": 6
     },
     {
       "task": "Sajid",
-      "status": false,
+      "status": "true",
       "id": 7
     },
     {
       "task": "Task 4",
-      "status": false,
+      "status": "false",
       "id": 8
     },
     {
       "task": "Task 2",
-      "status": false,
+      "status": "false",
       "id": 9
     },
     {
       "task": "Task 5",
-      "status": false,
+      "status": "true",
       "id": 10
     },
     {
       "task": "Task 6",
-      "status": false,
+      "status": "false",
       "id": 11
     },
     {
       "task": "Task 7",
-      "status": false,
+      "status": "false",
       "id": 12
     },
     {
       "task": "Task 8",
-      "status": false,
+      "status": "false",
       "id": 13
     },
     {
       "task": "Task 9",
-      "status": false,
+      "status": "false",
       "id": 14
     },
     {
       "task": "New Task",
-      "status": false,
+      "status": "false",
       "id": 15
     }
   ]

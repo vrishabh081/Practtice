@@ -11,5 +11,5 @@ export const loginInitState = {
 
 export const todoInitState = {
     task : "",
-    active: false
+    status: "false"
 }

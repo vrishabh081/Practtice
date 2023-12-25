@@ -39,15 +39,20 @@ const Home = () => {
     return (
         <div>
             <Navbar/>
-            <div style={{border:"1px solid", width:"400px", margin:'2rem auto'}}>
+            <div style={{border:"1px solid", width:"600px", margin:'2rem auto'}}>
                 <div style={{display:"flex", justifyContent:"space-around", margin:"1rem"}}>
                     <h4 style={{textAlign:'center'}}>Todo List</h4>
-                    <input type="text" placeholder='Search...' style={{padding:"0 0.2rem"}} onChange={handleSearch}  />
+                    <input type="text" placeholder='Search...' style={{padding:"0 0.2rem", width:"160px"}} onChange={handleSearch}  />
+                    <select name="" id="" style={{padding:"0 0.2rem", width:"160px"}} onChange={(e) => dispatch(getTodoList({method: "GET", url: `todos?status=${e.target.value}`, data: ""}))}>
+                        <option value="">Status</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
                 </div>
                 {
                     todos?.map((el) => <div key={el.id} style={{display:"flex", justifyContent:'space-between', alignItems:"baseline", border:"1px solid", margin:"0.5rem", padding:"0.2rem"}}>
-                        <p>{el.task}</p>
-                        <p>{el.status ? "True" : "False"}</p>
+                        <p style={{width:"100px"}}>{el.task}</p>
+                        <p>{el.status === "true" ? "True" : "False"}</p>
                         <div style={{display:"flex", alignItems:"center"}}>
                             <span><UpdateModal todo={el} /></span>
                             <button onClick={() => handleDelete(el.id)}>Delete</button>
