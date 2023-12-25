@@ -14,7 +14,11 @@ const initState = {
 const todoSlice = createSlice({
     name: "todo",
     initialState: initState,
-    reducers: {},
+    reducers: {
+        mutateTodos : (state, {payload}) => {
+            state.todos.forEach((el) => el.id === payload.todo.id && (el.task = payload.value))
+        }
+    },
     extraReducers: (builder) => {
         handleAsyncThunkAction(builder, addTodo, (state) => state.todoStatus = "Added Successfully")
         handleAsyncThunkAction(builder, getTodoList, (state, payload) => state.todos = payload)
@@ -23,4 +27,5 @@ const todoSlice = createSlice({
     }
 })
 
+export const {mutateTodos} = todoSlice.actions
 export default todoSlice.reducer

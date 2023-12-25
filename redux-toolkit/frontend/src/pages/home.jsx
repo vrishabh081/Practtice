@@ -31,7 +31,7 @@ const Home = () => {
 
     const handleDelete = (id) => {
         dispatch(deleteTodo({method: "DELETE", url: `todos/${id}`, data: ""}))
-        .then((res) => {
+        .then(() => {
             dispatch(getTodoList({method: "GET", url: "todos", data: ""}))
         })
     }

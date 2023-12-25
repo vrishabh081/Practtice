@@ -1,22 +1,12 @@
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useFormik } from 'formik';
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getTodoList, updateTodo } from '../utils/asyncFun';
-
-const validate = (values) => {
-    let errors = {};
-    
-    if(!values.task){
-        errors.task = "Task is required"
-    }
-
-    return errors
-}
+import { mutateTodos } from '../toolkit/todoSlice';
+import { validateForm } from '../utils/validate';
 
 export default function UpdateModal({todo}) {
     const dispatch = useDispatch();
@@ -32,7 +22,7 @@ export default function UpdateModal({todo}) {
 
     const formik = useFormik({
         initialValues : {id: todo.id, task: todo.task, status: todo.status},
-        validate,
+        validate: (values) => validateForm(values),
         onSubmit: useCallback((values) => {
             dispatch(updateTodo({method: "PATCH", url: `todos/${todo.id}`, data: values}))
             .then(() => {
@@ -41,7 +31,6 @@ export default function UpdateModal({todo}) {
             })
         }, [])
     })
-
 
     return (
         <>
@@ -59,7 +48,7 @@ export default function UpdateModal({todo}) {
                 </DialogTitle>
                 <DialogContent>
                     <form onSubmit={formik.handleSubmit}>
-                        <input type="text" name ="task" value={formik.values.task} onChange={formik.handleChange} onBlur={formik.handleBlur} placeholder='Type your task' style={{width:"90%", display:"block", margin:"0.5rem auto", borderRadius:"0.5rem", border:"1px solid black", padding:"0.6rem"}} />
+                        <input type="text" name ="task" value={formik.values.task} onChange={(e) => {formik.handleChange(e); dispatch(mutateTodos({todo, value: e.target.value}))}} onBlur={formik.handleBlur} placeholder='Type your task' style={{width:"90%", display:"block", margin:"0.5rem auto", borderRadius:"0.5rem", border:"1px solid black", padding:"0.6rem"}} />
                         <input type="submit" value={"Update"} style={{width:"90%", display:"block", margin:" 2rem auto 0.5rem auto", borderRadius:"0.5rem", border:"1px solid black", padding:"0.6rem"}} />
                         <span>{formik.errors.task && formik.touched.task ? formik.errors.task : ""}</span>
                     </form>

@@ -3,21 +3,8 @@ import {useFormik} from "formik"
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { addTodo } from '../utils/asyncFun';
-
-const initialValues = {
-    task: "",
-    active: false,
-}
-
-const validate = (values) => {
-    let errors = {};
-    
-    if(!values.task){
-        errors.task = "Task is required"
-    }
-
-    return errors
-}
+import { todoInitState } from '../utils/initialState';
+import { validateForm } from '../utils/validate';
 
 const AddTodo = () => {
     const navigate = useNavigate();
@@ -25,11 +12,11 @@ const AddTodo = () => {
     const data = useSelector((store) => store.todoReducer);
 
     const formik = useFormik({
-        initialValues,
-        validate,
+        initialValues: todoInitState,
+        validate: (values) => validateForm(values),
         onSubmit: useCallback(({task}) => {
             dispatch(addTodo({method: "POST", url: "todos", data: {task, status: false}}))
-            .then((res) => {
+            .then(() => {
                 navigate("/")
             })
         }, [dispatch])

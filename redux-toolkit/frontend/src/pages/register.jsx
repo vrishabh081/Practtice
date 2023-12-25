@@ -3,44 +3,20 @@ import {useFormik} from "formik"
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../toolkit/authSlice';
 import { useNavigate } from 'react-router-dom';
-
-const initialValues = {
-    name: "",
-    email: "",
-    password: ""
-}
-
-const validate = (values) => {
-    let errors = {};
-    
-    if(!values.name){
-        errors.name = "Name is required"
-    }
-    if(!values.email){
-        errors.email = "Email is required"
-    }
-    if(!values.password){
-        errors.password = "Password is required"
-    }
-
-    return errors
-}
+import { registerInitState } from '../utils/initialState';
+import { validateForm } from '../utils/validate';
 
 const Register = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const data = useSelector((store) => store.authReducer);
 
-    // Memoize the data to avoid unnecessary re-renders
-    const memoizedData = useMemo(() => data, [data]);
-    console.log('data------->', memoizedData);
-
     const formik = useFormik({
-        initialValues,
-        validate,
+        initialValues : registerInitState,
+        validate: (values) => validateForm(values),
         onSubmit: useCallback(({name, email, password}) => {
             dispatch(registerUser({name, email, password}))
-            .then((res) => {
+            .then(() => {
                 alert("Successfully signed up");
                 navigate("/login")
             })

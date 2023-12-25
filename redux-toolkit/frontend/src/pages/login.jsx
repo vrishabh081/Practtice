@@ -3,24 +3,8 @@ import {useFormik} from "formik"
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../toolkit/authSlice';
 import { useNavigate } from 'react-router-dom';
-
-const initialValues = {
-    email: "",
-    password: ""
-}
-
-const validate = (values) => {
-    let errors = {};
-
-    if(!values.email){
-        errors.email = "Email is required"
-    }
-    if(!values.password){
-        errors.password = "Password is required"
-    }
-
-    return errors
-}
+import { loginInitState } from '../utils/initialState';
+import { validateForm } from '../utils/validate';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -32,11 +16,11 @@ const Login = () => {
     console.log('data------->', memoizedData);
 
     const formik = useFormik({
-        initialValues,
-        validate,
+        initialValues: loginInitState,
+        validate: (values) => validateForm(values),
         onSubmit: useCallback(({email, password}) => {
             dispatch(loginUser({email, password}))
-            .then((res) => {
+            .then(() => {
                 alert("Successfully logged in");
                 navigate("/")
             })
