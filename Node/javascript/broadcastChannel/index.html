@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Home</h1>
+        <a href="about.html">About</a>
+    </div>
+    <button onclick="Logout()">Log Out</button>
+</body>
+</html>
+
+<script>
+    // Broadcast channel-
+    const bc = new BroadcastChannel("Log Out");
+
+    // Log out-
+    const Logout = () => {
+        // Send message-
+        bc.postMessage("Log Out")
+        window.location.href = "login.html"
+    }
+
+    // Get message-
+    bc.onmessage = (event) => {
+        console.log(event.data);
+        if(event.data == "Log Out"){
+            window.location.href = "login.html"
+        }
+    } 
+
+</script>
