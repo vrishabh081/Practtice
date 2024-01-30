@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speedometer</title>
+<style>
+  #speedometer {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+</head>
+<body>
+<div id="speedometer">Speed: <span id="speed">0</span> km/h</div>
+
+<script>
+  // Function to calculate speed between two points
+  function calculateSpeed(prevPosition, newPosition) {
+    console.log(newPosition)
+    if (!prevPosition || !newPosition) return 0;
+
+    const lat1 = prevPosition.coords.latitude;
+    const lon1 = prevPosition.coords.longitude;
+    const lat2 = newPosition.coords.latitude;
+    const lon2 = newPosition.coords.longitude;
+    const timeDiff = newPosition.timestamp - prevPosition.timestamp;
+    const distance = calculateDistance(lat1, lon1, lat2, lon2);
+    const speed = (distance / timeDiff) * 3600; // Convert m/s to km/h
+
+    return speed;
+  }
+
+  // Function to calculate distance between two points using Haversine formula
+  function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the Earth in km
+    const dLat = (lat2 - lat1) * (Math.PI / 180);
+    const dLon = (lon2 - lon1) * (Math.PI / 180);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * (Math.PI / 180)) *
+        Math.cos(lat2 * (Math.PI / 180)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distance in km
+    return distance;
+  }
+
+  // Update speedometer display
+  function updateSpeed(speed) {
+    document.getElementById("speed").innerText = speed.toFixed(2);
+  }
+
+  // Watch position changes
+  let prevPosition = null;
+  navigator.geolocation.watchPosition(
+    function (position) {
+      const speed = calculateSpeed(prevPosition, position);
+      updateSpeed(speed);
+      prevPosition = position;
+    },
+    function (error) {
+      console.error("Error getting current position:", error);
+    },
+    { enableHighAccuracy: true }
+  );
+</script>
+</body>
+</html>
