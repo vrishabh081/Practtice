@@ -9,7 +9,7 @@ const connection = mySql.createConnection({
 })
 
 // Connect to database-
-const dbConnection = connection.connect((err) => {
+connection.connect((err) => {
     if(err){
         console.log(err);
         return;
@@ -20,4 +20,4 @@ const dbConnection = connection.connect((err) => {
 })
 
 // Export database connection-
-module.exports = dbConnection;
+module.exports = connection.promise();
