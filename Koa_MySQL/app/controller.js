@@ -47,6 +47,28 @@ const login = async (res) => {
     return res.body = "Login"
 }
 
+const getProducts = async (res) => {
+    try{
+        const data = await dbConnection.execute('select * from product');
+        res.body = data
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+const addProduct = async (res) => {
+    try{
+        const {title, description, type, price} = res.request.body;
+        const query = ('insert into product (title, description, price, type) values (?, ?, ?, ?)');
+        const saveData = await dbConnection.execute(query, [title, description, price, type]);
+        return res.body = saveData; 
+    }
+    catch(error){
+        console.log(error);
+    }
+}
 
 
-module.exports = {register, login};
+
+module.exports = {register, login, getProducts, addProduct};
