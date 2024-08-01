@@ -1,0 +1,7 @@
+{
+    "watch": [
+        "app/**/*.ts"
+    ],
+    "ext": "ts",
+    "exec": "ts-node --transpile-only app/index.ts"
+}
