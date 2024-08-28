@@ -4,12 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="index.js" defer></script>
+    <!-- <script src="index.js" defer></script> -->
 </head>
 <body>
     <h1>Voice Recognision</h1>
     <div class="texts" style="font-size: 30px">
-
     </div>
 </body>
 </html>
+
+<script>
+    // Closure-
+    // function counter () {
+    //     let count = 0;
+    //     return function () {
+    //         count ++;
+    //         console.log("Count", count);
+    //     }
+    // }
+
+    // const myCounter = counter();
+
+    // myCounter();
+    // myCounter();
+    // myCounter();
+
+    const message1 = {message: "Married"}
+    const message2 = {message: "Married"}
+
+    // Promises-
+    const isMarried = (value) => {
+        return new Promise((resolve, reject) => {
+            value ? resolve(message1) : reject(message2)
+        })
+    }
+
+    isMarried(true)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
+    
+</script>
